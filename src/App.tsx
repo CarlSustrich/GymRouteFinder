@@ -29,6 +29,7 @@ import LogIn from './LogIn';
 import Home from './Home';
 import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import firestore from '@react-native-firebase/firestore';
 
 type SectionProps = PropsWithChildren<{title: string;}>;
 

@@ -1,4 +1,4 @@
-package com.testingreactcli;
+package com.gymRouteFinder;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

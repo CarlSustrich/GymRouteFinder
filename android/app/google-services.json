@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457872004929",
+    "project_id": "gymroutefinder",
+    "storage_bucket": "gymroutefinder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457872004929:android:ed83980a99d6d6d9f7f3c0",
+        "android_client_info": {
+          "package_name": "com.gymRouteFinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457872004929-r9ug5dbpued1cond85s3316sambi3f7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2o-wDuP9-UZil2Z2qC3pZ5_ZyjyDJtSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457872004929-r9ug5dbpued1cond85s3316sambi3f7s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,10 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
+// plugins {
+//     id 'com.google.gms.google-services'
+// }
+
+apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
@@ -93,9 +98,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.testingreactcli"
+    namespace "com.gymRouteFinder"
     defaultConfig {
-        applicationId "com.testingreactcli"
+        applicationId "com.gymRouteFinder"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -151,6 +156,14 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+
+    //instructed to add when first adding app to google/firebase
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //instructed to add when adding firestore
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
 

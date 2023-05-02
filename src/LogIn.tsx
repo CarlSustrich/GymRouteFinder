@@ -2,10 +2,12 @@ import {
   View,
   Text, 
   StyleSheet,
-  Button
+  Button,
+  TextInput
  } from "react-native";
 import {useNavigation, useRoute} from '@react-navigation/native';
 import { useState } from "react";
+import firestore from '@react-native-firebase/firestore';
 
 import type { NativeStackScreenProps, NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -20,12 +22,17 @@ interface Props {
 
 function LogIn({navigation}):JSX.Element {
 
-  // const [createToggle, setCreate] = useState(false);
+  const [createToggle, setCreate] = useState(false);
   
+  const onClick = () => {
+    navigation.replace("Home", {names: "fish"});
+  }
   return(
     <View style={styles.body}>
-      <Text> Log In/Create Account</Text>
-      <Button title='Continue as Guest' onPress={()=>navigation.replace("Home", {names: "fish"})}></Button>
+      <Text> Log In To Your Account</Text>
+      <Text>UserName: </Text><TextInput></TextInput>
+      <Text>Password: </Text><TextInput></TextInput>
+      <Button title='Continue as Guest' onPress={onClick}></Button>
     </View>
   )
 }
