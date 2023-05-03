@@ -165,6 +165,10 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+    //instructed to add for auth
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    // if want to add facebook login later
+    //implementation 'com.facebook.android:facebook-android-sdk:8.x'
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")

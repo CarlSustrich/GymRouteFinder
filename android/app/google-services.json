@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "457872004929-r9ug5dbpued1cond85s3316sambi3f7s.apps.googleusercontent.com",
+          "client_id": "457872004929-kjt8fnodgl55pq6q743it1o3vm2uok1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gymRouteFinder",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "457872004929-ju6bu2j6iss4pqb0f1qh8oolo3ab67nf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "457872004929-r9ug5dbpued1cond85s3316sambi3f7s.apps.googleusercontent.com",
+              "client_id": "457872004929-ju6bu2j6iss4pqb0f1qh8oolo3ab67nf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

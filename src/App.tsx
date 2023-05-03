@@ -5,9 +5,10 @@
  * @format
  */
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -26,10 +27,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import LogIn from './LogIn';
+import LogOut from './LogOut';
 import Home from './Home';
 import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth'
 
 type SectionProps = PropsWithChildren<{title: string;}>;
 
@@ -121,19 +124,49 @@ type SectionProps = PropsWithChildren<{title: string;}>;
 
 function App(): JSX.Element {
 
-  const [isAuth, setAuth] = useState(false);
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
   const Stack = createNativeStackNavigator();
 
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  function onLogout() {
+    setUser('');
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  // return (
+  //   <>
+  //       <NavigationContainer>
+  //         <Stack.Navigator initialRouteName="Login">
+  //           <Stack.Screen name="LogIn" component={LogIn} options={{title: "Log In Title I Guess"}} />
+  //           <Stack.Screen name='Home' component={Home} />
+  //         </Stack.Navigator>
+  //       </NavigationContainer>
+  //   </>
+  // )
+
+  // if (initializing) null;
+
+  if (!user) {
+    return (
+        <LogIn />
+    );
+  }
+
   return (
-    <>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen name="LogIn" component={LogIn} options={{title: "Log In Title I Guess"}} />
-            <Stack.Screen name='Home' component={Home} />
-          </Stack.Navigator>
-        </NavigationContainer>
-    </>
-  )
+    <View>
+      <LogOut/>
+      <Text>Welcome {user.email}</Text>
+    </View>
+  );
 }
 
 
