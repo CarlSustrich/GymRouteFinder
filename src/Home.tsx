@@ -1,9 +1,10 @@
 import { Text } from "react-native";
+import auth from '@react-native-firebase/auth';
 
 function Home ({navigation}) {
-  const contextType = ThemeContext;
+  const user = auth().currentUser;
   return(
-    <Text>Home Screen {this.context.user.email}</Text>
+    <Text>Home Screen {user?.email}</Text>
   )
 }
 

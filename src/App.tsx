@@ -131,7 +131,7 @@ function App(): JSX.Element {
 
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
-  // const userContext = createContext(user);
+
 
   function onAuthStateChanged(user) {
     setUser(user);
@@ -164,11 +164,11 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <ThemeProvider( value={user})>
+      
       <Tab.Navigator user={user}>
         <Tab.Screen name="Home" component={Home} />
       </Tab.Navigator>
-      </ThemeProvider>
+      
     </NavigationContainer>
   );
 }
