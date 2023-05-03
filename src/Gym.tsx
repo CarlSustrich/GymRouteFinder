@@ -62,34 +62,48 @@ const Gym = ({navigation, route="YBcjHh6lrVbi5Exxb2rM"}) => {
   // }
 
   useEffect (() => {
-    getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
-  }, [])
-
-  async function getTargetGymById(id: string) {
-    try {
+    const getTargetGymById = async (id:string) => {
       const g = await firestore()
       .collection("gyms")
       .doc(id)
       .get()
-      const gData = await g.data()
-      await setTargetGym(gData)
-      console.log(gData)
-    } catch(e) {
-      console.log(e)
-    } 
-    // console.log(targetGym)
-  }
+      const gData = await g.data() 
+      setTargetGym(gData)
+    }
+    getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
+      .catch(console.error);
+    console.log(targetGym)
+  }, [])
+
+  // async function getTargetGymById(id: string) {
+  //   try {
+  //     const g = await firestore()
+  //     .collection("gyms")
+  //     .doc(id)
+  //     .get()
+  //     const gData = await g.data()
+  //     await setTargetGym(gData)
+  //     console.log(gData)
+  //   } catch(e) {
+  //     console.log(e)
+  //   } 
+  //   // console.log(targetGym)
+  // }
 
  
-
-
+  let visibleState;
+  if(targetGym) {
+    visibleState = <Text>{targetGym.gymName}</Text>
+  } else {
+    visibleState = <Text>{'No target gym'}</Text>
+  }
     
     
 
   return(  
     <View>
       <Text>Gym page</Text>
-      {/* <Text>{targetGym.name}</Text> */}
+      {visibleState}
     </View>
   )
 
