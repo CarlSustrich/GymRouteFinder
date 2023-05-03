@@ -61,24 +61,34 @@ const Gym = ({navigation, route="YBcjHh6lrVbi5Exxb2rM"}) => {
       setTargetGym(gData)
       // await getRoutesForGym(gData)
   }
+  //my failed attempt...
+  // const getRoutesForGym = async(gymData) => {
+  //   if (!gymData) return;
+    
+  //   let routeArray = []
+  //   gymData['RouteIds'].forEach(async function(route) {
+  //     const r = await firestore()
+  //       .collection("routes")
+  //       .doc(route)
+  //       .get();
+  //     const rData = await r.data()
+  //     await routeArray.push(rData)
+  //   });
+  //   setRoutes(routeArray)
+  // }
 
-  const getRoutesForGym = async(gymData) => {
+  //chatGPT's solution... im never gonna get a job
+  const getRoutesForGym = async (gymData) => {
     if (!gymData) return;
-    let routeArray = []
-    gymData['RouteIds'].forEach(async function(route) {
-      const r = await firestore()
-        .collection("routes")
-        .doc(route)
-        .get();
-      const rData = await r.data()
-      await routeArray.push(rData)
-      console.log("inside")
-      console.log(routeArray)
+  
+    const promises = gymData["RouteIds"].map(async (route) => {
+      const r = await firestore().collection("routes").doc(route).get();
+      return r.data();
     });
-    console.log("outside")
-    console.log(routeArray)
-    setRoutes(routeArray)
-  }
+  
+    const routeArray = await Promise.all(promises);
+    setRoutes(routeArray);
+  };
 
   let gymPic;
   let routeList;
