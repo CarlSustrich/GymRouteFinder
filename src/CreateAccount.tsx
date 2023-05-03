@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, Button, Text, View } from 'react-native';
+import { TextInput, Button, Text, View, StyleSheet } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 const SignUp = () => {
@@ -24,12 +24,12 @@ const SignUp = () => {
 
   return (
     <>
-      <View>
+      <View style={styles.body}>
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
-          style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+          style={styles.input}
           autoCapitalize="none"
         />
         <TextInput
@@ -37,7 +37,7 @@ const SignUp = () => {
           secureTextEntry
           value={password}
           onChangeText={(text) => setPassword(text)}
-          style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+          style={styles.input}
         />
         <Button title="Sign up" onPress={handleSignUp} />
       </View>
@@ -45,5 +45,25 @@ const SignUp = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  input: {
+    borderColor: "#808080",
+    color: '#808080',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+    width: '70%'
+  },
+  button: {
+    backgroundColor: '#808080',
+  }
+ 
+})
 
 export default SignUp;

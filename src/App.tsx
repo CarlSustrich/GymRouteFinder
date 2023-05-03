@@ -27,6 +27,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import LogIn from './LogIn';
+import Account from './Account';
 import LogOut from './LogOut';
 import Home from './Home';
 import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
@@ -133,10 +134,6 @@ function App(): JSX.Element {
     if (initializing) setInitializing(false);
   }
 
-  function onLogout() {
-    setUser('');
-  }
-
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
@@ -157,7 +154,7 @@ function App(): JSX.Element {
 
   if (!user) {
     return (
-        <LogIn />
+        <Account />
     );
   }
 
