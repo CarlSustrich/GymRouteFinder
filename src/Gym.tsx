@@ -3,6 +3,7 @@ import { useEffect, useState, createContext } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   Button,
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -93,7 +94,13 @@ const Gym = ({navigation, route="YBcjHh6lrVbi5Exxb2rM"}) => {
  
   let visibleState;
   if(targetGym) {
-    visibleState = <Text>{targetGym.gymName}</Text>
+    visibleState = 
+    <View>
+      {/* <Text>{targetGym.gymName}</Text> */}
+      <Image 
+        style={{width: '90%', height: '90%'}}
+        source={{uri: targetGym.gymMap}}></Image>
+    </View>
   } else {
     visibleState = <Text>{'No target gym'}</Text>
   }
