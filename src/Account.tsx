@@ -14,6 +14,7 @@ const Account = () => {
       <Stack.Navigator>
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="CreateAccount" component={CreateAccount} />
+        {/* account details merber? */}
       </Stack.Navigator>
 
     </NavigationContainer>

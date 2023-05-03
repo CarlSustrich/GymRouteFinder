@@ -1,8 +1,9 @@
 import { Text } from "react-native";
 
-function Home ({navigation, route} : {navigation: any, route: {params: {names: string}}}) {
+function Home ({navigation}) {
+  const contextType = ThemeContext;
   return(
-    <Text>Home Screen, {route.params.names}</Text>
+    <Text>Home Screen {this.context.user.email}</Text>
   )
 }
 

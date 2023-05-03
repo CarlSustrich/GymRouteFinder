@@ -5,7 +5,7 @@
  * @format
  */
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   Button,
@@ -30,8 +30,9 @@ import LogIn from './LogIn';
 import Account from './Account';
 import LogOut from './LogOut';
 import Home from './Home';
-import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
+import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth'
 
@@ -127,7 +128,10 @@ function App(): JSX.Element {
 
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
+
+  const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator();
+  // const userContext = createContext(user);
 
   function onAuthStateChanged(user) {
     setUser(user);
@@ -159,10 +163,13 @@ function App(): JSX.Element {
   }
 
   return (
-    <View>
-      <LogOut/>
-      <Text>Welcome {user.email}</Text>
-    </View>
+    <NavigationContainer>
+      <ThemeProvider( value={user})>
+      <Tab.Navigator user={user}>
+        <Tab.Screen name="Home" component={Home} />
+      </Tab.Navigator>
+      </ThemeProvider>
+    </NavigationContainer>
   );
 }
 
