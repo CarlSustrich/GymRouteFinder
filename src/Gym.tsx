@@ -34,83 +34,88 @@ import auth from '@react-native-firebase/auth'
 const Gym = ({navigation, route="YBcjHh6lrVbi5Exxb2rM"}) => {
 
   const [targetGym, setTargetGym] = useState();
-
-  // const gym = firestore()
-  //   .collection('Gyms')
-  //   .doc("YBcjHh6lrVbi5Exxb2rM")
-  //   .get()
-  //   .then(docSnapshot => {
-  //     if (docSnapshot.exists) {
-  //       const data = docSnapshot.data()
-  //       console.log(data)
-  //     } else {
-  //       console.log('not found')
-  //     }
-  //   })
+  const [routes, setRoutes] = useState([])
   
-  // async function getTargetGymById(id: string) {
-  //   let targetGymRef;
-  //   try {targetGymRef = await firestore().collection("gyms").doc("YBcjHh6lrVbi5Exxb2rM").get()}
-  //   catch(e){console.log(e)}
-    
   
-  //   if (targetGymRef) {
-  //     const targetGymData = targetGymRef.data();
-  //     console.log('Target gym data: ', targetGymData);
-  //   } else {
-  //     console.log('No matching gym found');
-  //   }
-  // }
-
   useEffect (() => {
-    const getTargetGymById = async (id:string) => {
-      const g = await firestore()
-      .collection("gyms")
-      .doc(id)
-      .get()
-      const gData = await g.data() 
-      setTargetGym(gData)
-    }
     getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
       .catch(console.error);
-    console.log(targetGym)
+    // getRoutesForGym()
+    //   .catch(console.error)
   }, [])
 
-  // async function getTargetGymById(id: string) {
-  //   try {
-  //     const g = await firestore()
-  //     .collection("gyms")
-  //     .doc(id)
-  //     .get()
-  //     const gData = await g.data()
-  //     await setTargetGym(gData)
-  //     console.log(gData)
-  //   } catch(e) {
-  //     console.log(e)
-  //   } 
-  //   // console.log(targetGym)
-  // }
+  useEffect(() => {
+    // console.log(targetGym)
+    getRoutesForGym(targetGym)
+      .catch(console.error)
+    
+  }, [targetGym]);
 
- 
-  let visibleState;
+
+  const getTargetGymById = async (id:string) => {
+      const g = await firestore()
+        .collection("gyms")
+        .doc(id)
+        .get()
+      const gData = await g.data() 
+      setTargetGym(gData)
+      // await getRoutesForGym(gData)
+  }
+
+  const getRoutesForGym = async(gymData) => {
+    if (!gymData) return;
+    let routeArray = []
+    gymData['RouteIds'].forEach(async function(route) {
+      const r = await firestore()
+        .collection("routes")
+        .doc(route)
+        .get();
+      const rData = await r.data()
+      await routeArray.push(rData)
+      console.log("inside")
+      console.log(routeArray)
+    });
+    console.log("outside")
+    console.log(routeArray)
+    setRoutes(routeArray)
+  }
+
+  let gymPic;
+  let routeList;
+
   if(targetGym) {
-    visibleState = 
+    gymPic = 
     <View>
-      {/* <Text>{targetGym.gymName}</Text> */}
+      <Text>{targetGym.gymName}</Text>
       <Image 
         style={{width: '90%', height: '90%'}}
-        source={{uri: targetGym.gymMap}}></Image>
+        source={{uri: targetGym.gymMap}} />
     </View>
   } else {
-    visibleState = <Text>{'No target gym'}</Text>
+    gymPic = <Text>{'No target gym'}</Text>
+  }
+
+  if(routes.length >0) {
+    console.log("greater than 0")
+    console.log(routes)
+    routeList =
+    <Text>{routes[0]['name']} - {routes[0]['grade']}</Text>
+      // <View>
+      //   {routes.map((route, index) => {<Text key={index}>{route.name} - {route.grade}</Text>
+          
+      //   })}
+      // </View>
+  } else {
+    console.log('noroutes')
+    routeList = <Text>{'No routes'}</Text>
   }
     
     
 
   return(  
     <View>
-      <Text>Gym page</Text>
-      {visibleState}
+      {gymPic}
+      {routeList}
     </View>
   )
 
