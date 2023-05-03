@@ -29,6 +29,7 @@ import {
 import LogIn from './LogIn';
 import Account from './Account';
 import LogOut from './LogOut';
+import Gym from './Gym';
 import Home from './Home';
 import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
@@ -143,18 +144,8 @@ function App(): JSX.Element {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  // return (
-  //   <>
-  //       <NavigationContainer>
-  //         <Stack.Navigator initialRouteName="Login">
-  //           <Stack.Screen name="LogIn" component={LogIn} options={{title: "Log In Title I Guess"}} />
-  //           <Stack.Screen name='Home' component={Home} />
-  //         </Stack.Navigator>
-  //       </NavigationContainer>
-  //   </>
-  // )
 
-  // if (initializing) null;
+  if (initializing)  null;
 
   if (!user) {
     return (
@@ -167,6 +158,9 @@ function App(): JSX.Element {
       
       <Tab.Navigator user={user}>
         <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Gym" component={Gym} />
+        <Tab.Screen name="Logout" component={LogOut} />
+        
       </Tab.Navigator>
       
     </NavigationContainer>
