@@ -12,12 +12,12 @@ export default GymPic
 
 const styles = StyleSheet.create({
     body: {
-      // flex: 1,
+      flex: .55,
       // height: '30%',
       alignItems: 'center',
       justifyContent: 'center',
       width: '100%',
-      height: '70%',
-      resizeMode: "contain"
+      // height: '100%',
+      resizeMode: "stretch"
     }
   });

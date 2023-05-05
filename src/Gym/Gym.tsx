@@ -95,8 +95,13 @@ const Gym = ({navigation}) => {
 
   return(  
     <View style={styles.body}>
-        {gymPic}
-        {routeList}    
+        {/* <View style={styles.picView}> */}
+          {gymPic}
+        {/* </View> */}
+        {/* <View style={styles.listView}> */}
+          {routeList} 
+        {/* </View> */}
+           
     </View>
   )
 
@@ -108,10 +113,18 @@ const styles = StyleSheet.create({
   //   alignItems: 'center',
   //   justifyContent: 'center'
   // },
+  picView: {
+    height: '30%'
+  },
+  listView: {
+    height: "60%"
+  },
   body: {
+    // position: 'absolute',
+    // top: 0,
+    // backgroundColor: '#000000',
     flexDirection: 'column',
     flex: 1,
-    // height: '30%',
     alignItems: 'center',
     justifyContent: 'flex-start',
     width: '100%',
@@ -119,18 +132,20 @@ const styles = StyleSheet.create({
     // resizeMode: "fill"
   },
   img: {
-    marginStart: 1000,
-    // padding: 0,
     flex: 1,
+    // height:"30%",
+    // padding: 0,
+    // flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     // resizeMode: 'contain',
     // width: '100%',
-    // height: '100%'
+  
   },
   list: {
     alignItems: 'center',
     justifyContent: 'center',
+    // height: '60%'
     flex: 2
   }
 });
