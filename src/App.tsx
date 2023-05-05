@@ -26,10 +26,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import LogIn from './LogIn';
-import Account from './Account';
-import LogOut from './LogOut';
-import Gym from './Gym';
+import LogIn from './Account/LogIn';
+import Account from './Account/Account';
+import LogOut from './Account/LogOut';
+import Gym from './Gym/Gym';
 import Home from './Home';
 import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
