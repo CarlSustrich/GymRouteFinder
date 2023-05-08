@@ -29,125 +29,92 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth'
+import ImageViewer from 'react-native-image-zoom-viewer';
 
 const Gym = ({navigation}) => {
 
-  const [targetGym, setTargetGym] = useState();
-  const [routes, setRoutes] = useState([])
+  // const [targetGym, setTargetGym] = useState();
+  // const [routes, setRoutes] = useState([])
   
   
-  useEffect (() => {
-    getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
-      .catch(console.error);
-  }, [])
+  // useEffect (() => {
+  //   getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
+  //     .catch(console.error);
+  // }, [])
 
-  useEffect(() => {
-    getRoutesForGym(targetGym)
-      .catch(console.error)
-  }, [targetGym]);
+  // useEffect(() => {
+  //   getRoutesForGym(targetGym)
+  //     .catch(console.error)
+  // }, [targetGym]);
 
 
-  const getTargetGymById = async (id:string) => {
-      const g = await firestore()
-        .collection("gyms")
-        .doc(id)
-        .get()
-      const gData = await g.data() 
-      setTargetGym(gData)
-  }
+  // const getTargetGymById = async (id:string) => {
+  //     const g = await firestore()
+  //       .collection("gyms")
+  //       .doc(id)
+  //       .get()
+  //     const gData = await g.data() 
+  //     setTargetGym(gData)
+  // }
   
-  const getRoutesForGym = async (gymData) => {
-    if (!gymData) return;
+  // const getRoutesForGym = async (gymData) => {
+  //   if (!gymData) return;
+  //   const promises = gymData["RouteIds"].map(async (route:string) => {
+  //     const r = await firestore().collection("routes").doc(route).get();
+  //     return r.data();
+  //   });
   
-    const promises = gymData["RouteIds"].map(async (route:string) => {
-      const r = await firestore().collection("routes").doc(route).get();
-      return r.data();
-    });
+  //   const routeArray = await Promise.all(promises);
+  //   setRoutes(routeArray);
+  // };
+
+  // let gymPic;
+  // let routeList;
+
+  // if(targetGym) {
+  //   gymPic = <GymPic src={targetGym.gymMap} />
+  // } else {
+  //   gymPic = <Text>{'No target gym'}</Text>
+  // }
   
-    const routeArray = await Promise.all(promises);
-    setRoutes(routeArray);
-  };
+  // if (routes.length > 0) {
+  //   routeList = <RouteDisplay list={routes} />
+  // } else {
+  //   routeList = <Text>{'No routes'}</Text>
+  // }
 
-  let gymPic;
-  let routeList;
-
-  if(targetGym) {
-    gymPic = <GymPic style={styles.img} src={targetGym.gymMap} />
-    // <View style={styles.picBody}>
-    //   <Text >{targetGym.gymName}</Text>
-    //   <GymPic style={styles.img} src={targetGym.gymMap} />
-    // </View>
-  } else {
-    gymPic = <Text>{'No target gym'}</Text>
-  }
-  
-  if (routes.length > 0) {
-    routeList = <RouteDisplay style={styles.list} list={routes} />
-    // routeList = routes.map((route) => (
-    //   <View key={route.name}>
-    //     <Text>{route.name} - {route.grade}</Text>
-    //     <Text>{route.location}</Text>
-    //   </View>
-    // ));
-  } else {
-    routeList = <Text>{'No routes'}</Text>
-  }
-
-  return(  
-    <View style={styles.body}>
-        {/* <View style={styles.picView}> */}
-          {gymPic}
-        {/* </View> */}
-        {/* <View style={styles.listView}> */}
-          {routeList} 
-        {/* </View> */}
-           
-    </View>
-  )
-
+  return(
+    <GymPic />
+    )
 }
 
-const styles = StyleSheet.create({
-  // picBody: {
-  //   // width: '100%',
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
-  // },
-  picView: {
-    height: '30%'
-  },
-  listView: {
-    height: "60%"
-  },
-  body: {
-    // position: 'absolute',
-    // top: 0,
-    // backgroundColor: '#000000',
-    flexDirection: 'column',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '100%',
-    height: '100%',
-    // resizeMode: "fill"
-  },
-  img: {
-    flex: 1,
-    // height:"30%",
-    // padding: 0,
-    // flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // resizeMode: 'contain',
-    // width: '100%',
-  
-  },
-  list: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    // height: '60%'
-    flex: 2
-  }
-});
+
+// const Gym = () => {
+//   const images = [
+//     {
+//       url:
+//         'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
+//     }
+//   ];
+// const styles = StyleSheet.create({
+//   container: {
+//     backgroundColor: '#F5FCFF',
+//     flex: 1,
+//   }
+//   });
+// return(
+//   <SafeAreaView style={{flex: 1}}>
+//   <View style={styles.container}>
+//     <ImageViewer
+//       imageUrls={images}
+//       renderIndicator={() => null}
+//     />
+//   </View>
+// </SafeAreaView>
+// );
+
+
+
+// }
 
 export default Gym;

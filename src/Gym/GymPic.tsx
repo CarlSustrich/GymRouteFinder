@@ -1,23 +1,40 @@
 import { Image, StyleSheet, View } from "react-native"
-import { NativeComponentType } from "react-native/Libraries/Utilities/codegenNativeComponent"
+import { NativeComponentType } from "react-native/Libraries/Utilities/codegenNativeComponent";
+import ImageViewer from 'react-native-image-zoom-viewer';
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const GymPic = (addy) => {
-  return (
-    // <View style={styles.body}>
-      <Image style={styles.body} source={{uri: addy.src}}></Image>
-    // </View>
-  )
+const  GymPic = () => {
+
+  const images = [
+    {
+      url:
+        'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
+    }
+  ];
+
+
+   return(
+        <SafeAreaView style={{flex: 1}}>
+          <View style={styles.container}>
+            <ImageViewer
+              imageUrls={[
+                {
+                  url:
+                    'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
+                }
+              ]}
+              renderIndicator={() => null}
+            />
+          </View>
+        </SafeAreaView>
+      );
 }
+
 export default GymPic
 
 const styles = StyleSheet.create({
-    body: {
-      flex: .55,
-      // height: '30%',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%',
-      // height: '100%',
-      resizeMode: "stretch"
-    }
+  container: {
+    backgroundColor: '#F5FCFF',
+    flex: 1,
+  }
   });
