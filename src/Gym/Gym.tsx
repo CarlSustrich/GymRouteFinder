@@ -33,88 +33,72 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 
 const Gym = ({navigation}) => {
 
-  // const [targetGym, setTargetGym] = useState();
-  // const [routes, setRoutes] = useState([])
+  const [targetGym, setTargetGym] = useState();
+  const [routes, setRoutes] = useState([])
   
   
-  // useEffect (() => {
-  //   getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
-  //     .catch(console.error);
-  // }, [])
+  useEffect (() => {
+    getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
+      .catch(console.error);
+  }, [])
 
-  // useEffect(() => {
-  //   getRoutesForGym(targetGym)
-  //     .catch(console.error)
-  // }, [targetGym]);
+  useEffect(() => {
+    getRoutesForGym(targetGym)
+      .catch(console.error)
+  }, [targetGym]);
 
 
-  // const getTargetGymById = async (id:string) => {
-  //     const g = await firestore()
-  //       .collection("gyms")
-  //       .doc(id)
-  //       .get()
-  //     const gData = await g.data() 
-  //     setTargetGym(gData)
-  // }
+  const getTargetGymById = async (id:string) => {
+      const g = await firestore()
+        .collection("gyms")
+        .doc(id)
+        .get()
+      const gData = await g.data() 
+      setTargetGym(gData)
+  }
   
-  // const getRoutesForGym = async (gymData) => {
-  //   if (!gymData) return;
-  //   const promises = gymData["RouteIds"].map(async (route:string) => {
-  //     const r = await firestore().collection("routes").doc(route).get();
-  //     return r.data();
-  //   });
+  const getRoutesForGym = async (gymData) => {
+    if (!gymData) return;
+    const promises = gymData["RouteIds"].map(async (route:string) => {
+      const r = await firestore().collection("routes").doc(route).get();
+      return r.data();
+    });
   
-  //   const routeArray = await Promise.all(promises);
-  //   setRoutes(routeArray);
-  // };
+    const routeArray = await Promise.all(promises);
+    setRoutes(routeArray);
+  };
 
-  // let gymPic;
-  // let routeList;
+  let gymPic;
+  let routeList;
 
-  // if(targetGym) {
-  //   gymPic = <GymPic src={targetGym.gymMap} />
-  // } else {
-  //   gymPic = <Text>{'No target gym'}</Text>
-  // }
+  if(targetGym) {
+    gymPic = <GymPic style={styles.mapContainer} src={[{url: targetGym.gymMap}]} />
+  } else {
+    gymPic = <Text>{'No gym selected'}</Text>
+  }
   
-  // if (routes.length > 0) {
-  //   routeList = <RouteDisplay list={routes} />
-  // } else {
-  //   routeList = <Text>{'No routes'}</Text>
-  // }
+  if (routes.length > 0) {
+    routeList = <RouteDisplay style={styles.routeContainer} list={routes} />
+  } else {
+    routeList = <Text>{'No routes available'}</Text>
+  }
 
   return(
-    <GymPic />
-    )
+    <View style={{flex:1}}>
+      {gymPic}
+      {routeList}
+    </View>
+  )
 }
 
 
-// const Gym = () => {
-//   const images = [
-//     {
-//       url:
-//         'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
-//     }
-//   ];
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: '#F5FCFF',
-//     flex: 1,
-//   }
-//   });
-// return(
-//   <SafeAreaView style={{flex: 1}}>
-//   <View style={styles.container}>
-//     <ImageViewer
-//       imageUrls={images}
-//       renderIndicator={() => null}
-//     />
-//   </View>
-// </SafeAreaView>
-// );
-
-
-
-// }
-
 export default Gym;
+
+const styles = StyleSheet.create({
+  mapContainer : {
+    flex:1
+  },
+  routeContainer: {
+    flex: 10
+  }
+})

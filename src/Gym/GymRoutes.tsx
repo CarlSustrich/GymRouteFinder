@@ -23,14 +23,14 @@ const RouteDisplay = (routeList) : JSX.Element => {
 
 export default RouteDisplay
 
-// const styles = StyleSheet.create({
-//   body: {
-//     // flex: 1,
-//     // height: '30%',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     width: '100%',
-//     height: '100%',
-//     resizeMode: "contain"
-//   }
-// });
+const styles = StyleSheet.create({
+  body: {
+    // flex: 1,
+    // height: '30%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+    resizeMode: "contain"
+  }
+});

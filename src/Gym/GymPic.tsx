@@ -3,26 +3,20 @@ import { NativeComponentType } from "react-native/Libraries/Utilities/codegenNat
 import ImageViewer from 'react-native-image-zoom-viewer';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const  GymPic = () => {
-
-  const images = [
-    {
-      url:
-        'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
-    }
-  ];
+const  GymPic = (props) => {
+  // const images = [
+  //   {
+  //     url:
+  //       'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
+  //   }
+  // ];
 
 
    return(
         <SafeAreaView style={{flex: 1}}>
           <View style={styles.container}>
             <ImageViewer
-              imageUrls={[
-                {
-                  url:
-                    'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
-                }
-              ]}
+              imageUrls={props.src}
               renderIndicator={() => null}
             />
           </View>
