@@ -38,10 +38,10 @@ const Gym = ({navigation}) => {
   const [routes, setRoutes] = useState([])
   
   
-  // useEffect (() => {
-  //   getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
-  //     .catch(console.error);
-  // }, [])
+  useEffect (() => {
+    getTargetGymById(gymId)
+      .catch(console.error);
+  }, [gymId])
 
   useEffect(() => {
     getRoutesForGym(targetGym)
@@ -96,34 +96,5 @@ const Gym = ({navigation}) => {
     </>
   )
 }
-
-
-// const Gym = () => {
-//   const images = [
-//     {
-//       url:
-//         'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
-//     }
-//   ];
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: '#F5FCFF',
-//     flex: 1,
-//   }
-//   });
-// return(
-//   <SafeAreaView style={{flex: 1}}>
-//   <View style={styles.container}>
-//     <ImageViewer
-//       imageUrls={images}
-//       renderIndicator={() => null}
-//     />
-//   </View>
-// </SafeAreaView>
-// );
-
-
-
-// }
 
 export default Gym;
