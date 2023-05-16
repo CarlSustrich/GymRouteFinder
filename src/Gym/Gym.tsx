@@ -32,7 +32,7 @@ import auth from '@react-native-firebase/auth'
 import ImageViewer from 'react-native-image-zoom-viewer';
 
 const Gym = ({navigation}) => {
-
+  const [gymId, setGymId] = useState(null)
   const [targetGym, setTargetGym] = useState();
   const [routes, setRoutes] = useState([])
   
