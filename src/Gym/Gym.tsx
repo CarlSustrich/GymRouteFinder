@@ -24,6 +24,7 @@ import Account from '../Account/Account';
 import GymPic from './GymPic';
 import RouteDisplay from './GymRoutes';
 import GymList from './GymList';
+import ZoomableImage from '../TESTING';
 import Home from '../Home';
 import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
@@ -40,7 +41,6 @@ const Gym = ({navigation}) => {
   
   
   useEffect (() => {
-    console.log(showList)
     getTargetGymById(gymId)
       .catch(console.error);
   }, [gymId])
@@ -79,8 +79,9 @@ const Gym = ({navigation}) => {
   let gymPic;
   let routeList;
 
-  if(targetGym) {
-    gymPic = <GymPic src={targetGym.gymMap} />
+  if(targetGym != undefined) {
+    console.log(targetGym.gymMap);
+    gymPic = <ZoomableImage src={targetGym.gymMap} />
   } else {
     gymPic = <Text>{'No target gym'}</Text>
   }

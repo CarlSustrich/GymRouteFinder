@@ -3,9 +3,12 @@ import { View, Image } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
 import {Dimensions} from 'react-native';
 
-const ZoomableImage = ({  }) => {
+const ZoomableImage = (route) => {
+  console.log(route)
 
-  const url="https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map"
+  const url=route['src']
+  
+  // const url="https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map"
 
   return (
     <View style={{ flex: 1 }}>
@@ -16,6 +19,7 @@ const ZoomableImage = ({  }) => {
         imageHeight={1500/2.5}
         minScale={.6}
         maxScale={2}
+        centerOn={{x: 0, y: 0, scale:.6}}
         enableSwipeDown={true}
         onSwipeDown={() => console.log('swipe down')}
       >

@@ -76,7 +76,6 @@ function App(): JSX.Element {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Gym" component={Gym} />
         <Tab.Screen name="Logout" component={LogOut} />
-        <Tab.Screen name="Zoom" component={ZoomableImage} />
       </Tab.Navigator>
       
     </NavigationContainer>
