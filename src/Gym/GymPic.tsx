@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     flex: 1,
   }
-  });
+});

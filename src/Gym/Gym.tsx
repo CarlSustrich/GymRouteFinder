@@ -33,12 +33,14 @@ import auth from '@react-native-firebase/auth'
 import ImageViewer from 'react-native-image-zoom-viewer';
 
 const Gym = ({navigation}) => {
+  const [showList, setShowList] = useState(true);
   const [gymId, setGymId] = useState(null)
   const [targetGym, setTargetGym] = useState();
   const [routes, setRoutes] = useState([])
   
   
   useEffect (() => {
+    console.log(showList)
     getTargetGymById(gymId)
       .catch(console.error);
   }, [gymId])
@@ -49,6 +51,7 @@ const Gym = ({navigation}) => {
   }, [targetGym]);
 
   const handleSettingTargetGym = (id) => {
+    setShowList(false)
     setGymId(id);
   }
 
@@ -89,12 +92,18 @@ const Gym = ({navigation}) => {
   }
 
   return(
-    <>
-      <GymList onSelectGym={handleSettingTargetGym}/>
-      {gymPic}
-      {routeList}
-    </>
+    <View style={styles.container}>
+      {showList && <GymList onSelectGym={handleSettingTargetGym}/>}
+      {!showList && gymPic}
+      {!showList && routeList}
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  }
+});
 
 export default Gym;
