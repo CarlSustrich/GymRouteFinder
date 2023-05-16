@@ -9,9 +9,6 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import { useState } from "react";
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth'
-import GoogleSignIn from "./GoogleSignIn";
-
-
 
 import type { NativeStackScreenProps, NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -44,7 +41,7 @@ function LogIn({navigation}):JSX.Element {
     }
   };
 
-  
+
 
   
   // const onClick = () => {
@@ -66,7 +63,6 @@ function LogIn({navigation}):JSX.Element {
         onChangeText={(text) => (setPassword(text))}/>
       <Button title='Log In' onPress={handleLogin}/>
       <Button title="Create Account" onPress={() => navigation.navigate('CreateAccount')} />
-      <GoogleSignIn/>
       {error ? <Text style={{ color: 'red', marginTop: 10 }}>{error}</Text> : null}
     </View>
   )
@@ -93,6 +89,3 @@ const styles = StyleSheet.create({
 })
 
 export default LogIn
-
-
-// '457872004929-ju6bu2j6iss4pqb0f1qh8oolo3ab67nf.apps.googleusercontent.com'

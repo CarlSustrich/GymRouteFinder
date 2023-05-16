@@ -1,5 +1,4 @@
 {
   "name": "gymRouteFinder",
-  "displayName": "gymRouteFinder",
-  "plugins": ["@react-native-google-signin/google-signin"]
+  "displayName": "gymRouteFinder"
 }

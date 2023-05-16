@@ -37,16 +37,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import ImageViewer from 'react-native-image-zoom-viewer';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 type SectionProps = PropsWithChildren<{title: string;}>;
 
 function App(): JSX.Element {
-
-  GoogleSignin.configure({
-    webClientId: "457872004929-ju6bu2j6iss4pqb0f1qh8oolo3ab67nf.apps.googleusercontent.com",
-    offlineAccess: false
-  });
 
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
