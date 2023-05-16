@@ -10,15 +10,18 @@ const ZoomableImage = ({  }) => {
   return (
     <View style={{ flex: 1 }}>
       <ImageZoom
-        cropWidth={Dimensions.get('window').width}
-        cropHeight={Dimensions.get('window').height / 3}
-        imageWidth={0}
-        imageHeight={0}
+        cropWidth={Dimensions.get('screen').width}
+        cropHeight={Dimensions.get('screen').height/2.5}
+        imageWidth={1562/2.5}
+        imageHeight={1500/2.5}
+        minScale={.6}
+        maxScale={2}
         enableSwipeDown={true}
         onSwipeDown={() => console.log('swipe down')}
       >
         <Image
-          style={{ width: 300, height: 400 }}
+          resizeMode='stretch'
+          style={{width: 1562/2.5, height: 1500/2.5}}
           source={{ uri: url }}
         />
       </ImageZoom>
