@@ -23,6 +23,7 @@ import {
 import Account from '../Account/Account';
 import GymPic from './GymPic';
 import RouteDisplay from './GymRoutes';
+import GymList from './GymList';
 import Home from '../Home';
 import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
@@ -37,24 +38,28 @@ const Gym = ({navigation}) => {
   const [routes, setRoutes] = useState([])
   
   
-  useEffect (() => {
-    getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
-      .catch(console.error);
-  }, [])
+  // useEffect (() => {
+  //   getTargetGymById("YBcjHh6lrVbi5Exxb2rM")
+  //     .catch(console.error);
+  // }, [])
 
   useEffect(() => {
     getRoutesForGym(targetGym)
       .catch(console.error)
   }, [targetGym]);
 
+  const handleSettingTargetGym = (id) => {
+    setGymId(id);
+  }
+
 
   const getTargetGymById = async (id:string) => {
-      const g = await firestore()
-        .collection("gyms")
-        .doc(id)
-        .get()
-      const gData = await g.data() 
-      setTargetGym(gData)
+    const g = await firestore()
+      .collection("gyms")
+      .doc(id)
+      .get()
+    const gData = await g.data() 
+    setTargetGym(gData)
   }
   
   const getRoutesForGym = async (gymData) => {
@@ -85,6 +90,7 @@ const Gym = ({navigation}) => {
 
   return(
     <>
+      <GymList onSelectGym={handleSettingTargetGym}/>
       {gymPic}
       {routeList}
     </>
