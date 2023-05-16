@@ -31,6 +31,7 @@ import Account from './Account/Account';
 import LogOut from './Account/LogOut';
 import Gym from './Gym/Gym';
 import Home from './Home';
+import ZoomableImage from './TESTING';
 import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -75,6 +76,7 @@ function App(): JSX.Element {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Gym" component={Gym} />
         <Tab.Screen name="Logout" component={LogOut} />
+        <Tab.Screen name="Zoom" component={ZoomableImage} />
       </Tab.Navigator>
       
     </NavigationContainer>
