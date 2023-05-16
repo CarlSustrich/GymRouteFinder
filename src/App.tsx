@@ -81,36 +81,4 @@ function App(): JSX.Element {
   );
 }
 
-
-  // const images = [
-  //       {
-  //         url:
-  //           'https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map',
-  //       },
-  //       {
-  //         url:
-  //           'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
-  //       },
-  //     ];
-  // return(
-  //       <SafeAreaView style={{flex: 1}}>
-  //         <View style={styles.container}>
-  //           <ImageViewer
-  //             imageUrls={images}
-  //             renderIndicator={() => null}
-  //           />
-  //         </View>
-  //       </SafeAreaView>
-  //     );
-  //   };
-    
-  //   const styles = StyleSheet.create({
-  //     container: {
-  //       backgroundColor: '#F5FCFF',
-  //       flex: 1,
-  //     },
-  //   });
-
-
-
 export default App;

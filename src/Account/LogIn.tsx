@@ -35,18 +35,12 @@ function LogIn({navigation}):JSX.Element {
     try {
       const userCredential = await auth().signInWithEmailAndPassword (email, password);
       console.log('user logged in succesfully', userCredential.user)
-    } catch (error) {
+    } catch (error : any) {
       setError(error.message)
       console.log(error);
     }
   };
 
-
-
-  
-  // const onClick = () => {
-  //   navigation.replace("Home", {names: "fish"});
-  // }
   return(
     <View style={styles.body}>
       <Text> Log In To Your Account</Text>
