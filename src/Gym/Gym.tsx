@@ -11,6 +11,7 @@ import {
   Text,
   useColorScheme,
   View,
+  BackHandler,
 } from 'react-native';
 
 import {
@@ -26,7 +27,7 @@ import RouteDisplay from './GymRoutes';
 import GymList from './GymList';
 import ZoomableImage from '../TESTING';
 import Home from '../Home';
-import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
+import { NavigationContainer, ThemeProvider, useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import firestore from '@react-native-firebase/firestore';
@@ -49,6 +50,26 @@ const Gym = ({navigation}) => {
     getRoutesForGym(targetGym)
       .catch(console.error)
   }, [targetGym]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (!showList) {
+          setShowList(true);
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      const subscription = BackHandler.addEventListener(
+        'hardwareBackPress',
+        onBackPress
+      );
+
+      return () => subscription.remove();
+    }, [showList])
+  );
 
   const handleSettingTargetGym = (id) => {
     setShowList(false)
