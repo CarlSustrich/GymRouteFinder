@@ -38,6 +38,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import {PaperProvider} from 'react-native-paper';
 
 type SectionProps = PropsWithChildren<{title: string;}>;
 
@@ -71,13 +72,13 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Gym" component={Gym} />
-        <Tab.Screen name="Logout" component={LogOut} />
-      </Tab.Navigator>
-      
+      <PaperProvider>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Gym" component={Gym} />
+          <Tab.Screen name="Logout" component={LogOut} />
+        </Tab.Navigator>
+      </PaperProvider>
     </NavigationContainer>
   );
 }

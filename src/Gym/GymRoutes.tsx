@@ -9,28 +9,34 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { DataTable } from 'react-native-paper';
 
 const RouteDisplay = (routeList) : JSX.Element => {
   return(
-    routeList.list.map((route) => (
-    <View key={route.name}>
-      <Text>{route.name} - {route.grade}</Text>
-      <Text>{route.location}</Text>
-    </View>
-    ))
-  );
+    <DataTable style={styles.container}>
+      <DataTable.Header style={styles.tableHeader}>
+        <DataTable.Title>Name</DataTable.Title>
+        <DataTable.Title>Grade</DataTable.Title>
+        <DataTable.Title>Location</DataTable.Title>
+      </DataTable.Header>
+      {routeList.list.map((route) => (
+        <DataTable.Row>
+          <DataTable.Cell>{route.name}</DataTable.Cell>
+          <DataTable.Cell>{route.grade}</DataTable.Cell>
+          <DataTable.Cell>{route.location}</DataTable.Cell>
+        </DataTable.Row>
+      ))}
+    </DataTable>
+    )
 }
 
 export default RouteDisplay
 
-// const styles = StyleSheet.create({
-//   body: {
-//     // flex: 1,
-//     // height: '30%',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     width: '100%',
-//     height: '100%',
-//     resizeMode: "contain"
-//   }
-// });
+const styles = StyleSheet.create({
+  container: {
+    padding: 15,
+  },
+  tableHeader: {
+    backgroundColor: '#DCDCDC',
+  },
+});
