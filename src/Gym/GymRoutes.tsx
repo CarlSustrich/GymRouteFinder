@@ -20,7 +20,7 @@ const RouteDisplay = (routeList) : JSX.Element => {
         <DataTable.Title>Location</DataTable.Title>
       </DataTable.Header>
       {routeList.list.map((route) => (
-        <DataTable.Row>
+        <DataTable.Row key={route.name}>
           <DataTable.Cell>{route.name}</DataTable.Cell>
           <DataTable.Cell>{route.grade}</DataTable.Cell>
           <DataTable.Cell>{route.location}</DataTable.Cell>

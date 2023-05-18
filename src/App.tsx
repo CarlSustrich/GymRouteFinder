@@ -7,6 +7,7 @@
 import * as React from 'react';
 import { useEffect, useState, createContext } from 'react';
 import type {PropsWithChildren} from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   Button,
   SafeAreaView,
@@ -73,7 +74,32 @@ function App(): JSX.Element {
   return (
     <NavigationContainer>
       <PaperProvider>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === 'Home') {
+                iconName = focused
+                  ? 'home'
+                  : 'home-outline';
+              } else if (route.name === 'Gym') {
+                  iconName = focused 
+                  ? 'skull' 
+                  : 'skull-outline';
+              } else if (route.name === 'Logout') {
+                  iconName = focused 
+                  ? 'settings' 
+                  : 'settings-outline';
+              }
+
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'gray',
+          })}
+        >
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Gym" component={Gym} />
           <Tab.Screen name="Logout" component={LogOut} />
