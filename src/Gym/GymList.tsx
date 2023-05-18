@@ -53,7 +53,7 @@ const GymList = (route) => {
     <>
       {gymList &&
         gymList.map(gym => (
-          <Text key={gym.id} onPress={setSelectedGym}>{gym.gymName}</Text>
+          <Text style={styles.body} key={gym.id} onPress={setSelectedGym}>{gym.gymName}</Text>
           )
         )
       }
@@ -61,6 +61,10 @@ const GymList = (route) => {
   );
 };
 
-
+const styles = StyleSheet.create({
+  body: {
+    padding: 10
+  }
+});
 
 export default GymList;

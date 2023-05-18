@@ -7,11 +7,9 @@ const ZoomableImage = (route) => {
   console.log(route)
 
   const url=route['src']
-  
-  // const url="https://images.squarespace-cdn.com/content/v1/5a01fd2db1ffb6985b2a9ac5/1600886085976-J5SC3I8CMUVYXTS1OI6S/vital+level+1+climbing+map"
 
   return (
-    <View style={{ flex: 1 }}>
+    // <View style={{ flex: 1 }}>
       <ImageZoom
         cropWidth={Dimensions.get('screen').width}
         cropHeight={Dimensions.get('screen').height/2.5}
@@ -29,7 +27,7 @@ const ZoomableImage = (route) => {
           source={{ uri: url }}
         />
       </ImageZoom>
-    </View>
+    // </View>
   );
 };
 

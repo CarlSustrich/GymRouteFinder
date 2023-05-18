@@ -25,7 +25,7 @@ import Account from '../Account/Account';
 import GymPic from './GymPic';
 import RouteDisplay from './GymRoutes';
 import GymList from './GymList';
-import ZoomableImage from '../TESTING';
+import ZoomableImage from './TESTING';
 import Home from '../Home';
 import { NavigationContainer, ThemeProvider, useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'

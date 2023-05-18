@@ -31,7 +31,7 @@ import Account from './Account/Account';
 import LogOut from './Account/LogOut';
 import Gym from './Gym/Gym';
 import Home from './Home';
-import ZoomableImage from './TESTING';
+import ZoomableImage from './Gym/TESTING';
 import { NavigationContainer, ThemeProvider, useNavigation, useRoute } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
